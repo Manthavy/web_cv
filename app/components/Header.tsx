@@ -19,15 +19,16 @@ function Header() {
     return (
         
     <div className="bg-blue-500 text-white py-6 text-center sticky top-0 px-5 shadow-md z-10">
+       {/* Sticky Navbar */}
         <nav className="flex justify-between items-center">
           <div className="text-2xl font-semibold"></div>
           <ul className="text-[18px] list-none flex gap-6 m-0 hidden md:flex">
-            <li><button onClick={() => handleSmoothScroll("#about")} className="hover:text-blue-600 hover:underline transition-colors duration-200">About Me</button></li>
-            <li><button onClick={() => handleSmoothScroll("#Experience")} className="hover:text-blue-600 hover:underline transition-colors duration-200">Experience</button></li>
-            <li><button onClick={() => handleSmoothScroll("#Education")} className="hover:text-blue-600 hover:underline transition-colors duration-200">Education</button></li>
-            <li><button onClick={() => handleSmoothScroll("#Skills")} className="hover:text-blue-600 hover:underline transition-colors duration-200">Skills</button></li>
-            <li><button onClick={() => handleSmoothScroll("#Projects")} className="hover:text-blue-600 hover:underline transition-colors duration-200">Projects</button></li>
-            <li><button onClick={() => handleSmoothScroll("#Contact")} className="hover:text-blue-600 hover:underline transition-colors duration-200">Contact</button></li>
+            <li><button onClick={() => handleSmoothScroll("#about")} className="hover:text-blue-900 hover:underline transition-colors duration-200 cursor-pointer">About Me</button></li>
+            <li><button onClick={() => handleSmoothScroll("#Experience")} className="hover:text-blue-900 hover:underline transition-colors duration-200 cursor-pointer">Experience</button></li>
+            <li><button onClick={() => handleSmoothScroll("#Education")} className="hover:text-blue-900 hover:underline transition-colors duration-200 cursor-pointer">Education</button></li>
+            <li><button onClick={() => handleSmoothScroll("#Skills")} className="hover:text-blue-900 hover:underline transition-colors duration-200 cursor-pointer">Skills</button></li>
+            <li><button onClick={() => handleSmoothScroll("#Projects")} className="hover:text-blue-900 hover:underline transition-colors duration-200 cursor-pointer">Projects</button></li>
+            <li><button onClick={() => handleSmoothScroll("#Contact")} className="hover:text-blue-900 hover:underline transition-colors duration-200 cursor-pointer">Contact</button></li>
           </ul>
 
           {/* Mobile Menu Toggle */}

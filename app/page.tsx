@@ -262,122 +262,20 @@
 // }
 
 "use client";
-import { useState, useCallback, useEffect } from "react";
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import HeroSection from "./components/HeroSection";
+import AboutMe from "./components/MainSections/AboutMe";
+import Experience from "./components/MainSections/Experience";
+import Education from "./components/MainSections/Education";
+import Skills from "./components/MainSections/Skills";
+import Projects from "./components/MainSections/Projects";
+import Contact from "./components/MainSections/Contact";
+
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
-  // db connect
-  // AboutMe db
-  const [AboutMe, setAboutMe] = useState<any[]>([]);
-  const AboutMeRef = collection(db, 'AboutMe');
-  const fetchAboutMe = async () => {
-    const snapshot = await getDocs(AboutMeRef);
-    const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    setAboutMe(docs);
-  };
-  useEffect(() => {
-    fetchAboutMe();
-  }, []);
-
-  // Experience db
-  const [Experience, setExperience] = useState<any[]>([]);
-  const ExperienceRef = collection(db, 'Experience');
-  const fetchExperience = async () => {
-    const snapshot = await getDocs(ExperienceRef);
-    const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    setExperience(docs);
-  };
-  useEffect(() => {
-    fetchExperience();
-  }, []);
-
-  // Contact db
-  const [Contact, setContact] = useState<any[]>([]);
-  const ContactRef = collection(db, 'Contact');
-  const fetchContact = async () => {
-    const snapshot = await getDocs(ContactRef);
-    const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    setContact(docs);
-  };
-  useEffect(() => {
-    fetchContact();
-  }, []);
-
-  // Project db
-  const [Project, setProject] = useState<any[]>([]);
-  const ProjectRef = collection(db, 'Projects');
-  const fetchProject = async () => {
-    const snapshot = await getDocs(ProjectRef);
-    const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    setProject(docs);
-  };
-  useEffect(() => {
-    fetchProject();
-  }, []);
-
-  // Skill db
-  const [Skill, setSkill] = useState<any[]>([]);
-  const SkillRef = collection(db, 'Skills');
-  const fetchSkill = async () => {
-    const snapshot = await getDocs(SkillRef);
-    const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    setSkill(docs);
-  };
-  useEffect(() => {
-    fetchSkill();
-  }, []);
-
-  // Education db
-  const [Education, setEducation] = useState<any[]>([]);
-  const EducationRef = collection(db, 'Education');
-  const fetchEducation = async () => {
-    const snapshot = await getDocs(EducationRef);
-    const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    setEducation(docs);
-  };
-  useEffect(() => {
-    fetchEducation();
-  }, []);
-
-  // EducationDetail db
-  const [EducationDetail, setEducationDetail] = useState<any[]>([]);
-  const EducationDetailRef = collection(db, 'EducationDetail');
-  const fetchEducationDetail = async () => {
-    const snapshot = await getDocs(EducationDetailRef);
-    const docs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    setEducationDetail(docs);
-  };
-  useEffect(() => {
-    fetchEducationDetail();
-  }, []);
-
-
-  // // Function for smooth scrolling
-  // const handleSmoothScroll = useCallback((targetId: string) => {
-  //   setIsOpen(false); // Close the sidebar
-
-  //   if (targetId === "/") {
-  //     window.scrollTo({ top: 100, behavior: "smooth" });
-  //   } else {
-  //     const targetElement = document.querySelector(targetId);
-  //     if (targetElement) {
-  //       targetElement.scrollIntoView({ behavior: "smooth" });
-  //     }
-  //   }
-  // }, []);
-
   return (
     <div className="min-h-screen bg-gray-100 text-gray-800">
-      {/* Sticky Navbar */}
-     
-
      {/* Hero Section */}
-      <div className="bg-blue-400 text-white py-10 text-center">
-        <h1 className="text-4xl font-bold">Manthavy SENVISET</h1>
-        <p className="text-lg mt-2">I am a Web Developer</p> 
-      </div>
+      <HeroSection></HeroSection>
       {/* Images */}
       <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 mt-6 px-4">
         <img
@@ -393,115 +291,19 @@ export default function Home() {
       </div>
       {/* Main Content */}
       <div className="max-w-5xl mx-auto my-6 px-5 flex flex-col gap-8">
-        <main className="bg-white shadow-md rounded-md">
-     
-        
+        <main className="bg-white shadow-md rounded-md">  
           {/* About Me */}
-          <section
-           className="md:gap-20 md:scroll-mt-25 scroll-mt-23 py-6 border-b border-gray-300 hover:bg-cyan-100 hover:scale-[1.03] transition-all duration-300 px-3 rounded-sm"
-            id="about"
-          >
-            <h2 className="text-2xl text-blue-700 font-semibold mb-2">About Me</h2>
-            {AboutMe.map((detail) => (
-              <p key={detail.id} className="text-justify">{detail.AboutMe}</p>
-            ))}
-          </section>
-
+          <AboutMe></AboutMe>
           {/* Experience */}
-          <section
-           className="md:gap-20 md:scroll-mt-25 scroll-mt-23 py-6 border-b border-gray-300 hover:bg-cyan-100 hover:scale-[1.03] transition-all duration-300 px-3 rounded-sm"
-            id="Experience"
-          >
-            <h2 className="text-2xl text-blue-700 font-semibold mb-2">Experience</h2>
-            <ul className="list-disc list-inside space-y-1">
-              {Experience.map((Experiences) => (
-                <li key={Experiences.id}>
-                  {Experiences.Experience}
-                </li>
-              ))}
-            </ul>
-          </section>
-
+          <Experience></Experience>
           {/* Education */}
-          <section
-            className="md:gap-20 md:scroll-mt-25 scroll-mt-23 py-6 border-b border-gray-300 hover:bg-cyan-100 hover:scale-[1.03] transition-all duration-300 px-3 rounded-sm"
-            id="Education"
-          >
-            <h2 className="text-2xl text-blue-700 font-semibold mb-2">Education</h2>
-            {Education.map((Educations) => (
-              <p key={Educations.id} className="text-justify"><strong>{Educations.University}</strong> – {Educations.Faculty} </p>
-            ))}
-            <ul className="list-disc list-inside space-y-1">
-              {EducationDetail.map((EducationDetails) => (
-                <li key={EducationDetails.id}>
-                  {EducationDetails.fiel}
-                </li>
-              ))}
-            </ul>
-            {/* <p><strong>National University of Laos</strong> – FEN in Telecommunication Engineering (2012 – 2016)</p> */}
-            {/* <ul className="list-disc list-inside space-y-1">
-              <li>Focused on networking, programming, and digital systems.</li>
-              <li>Graduated with distinction, top 10% of class.</li>
-            </ul> */}
-          </section>
-
+          <Education></Education>
           {/* Skills */}
-          <section
-            className="md:gap-20 md:scroll-mt-25 scroll-mt-23 py-6 border-b border-gray-300 hover:bg-cyan-100 hover:scale-[1.03] transition-all duration-300 px-3 rounded-sm"
-            id="Skills"
-          >
-            <h2 className="text-2xl text-blue-700 font-semibold mb-2">Skills</h2>
-            {/* <ul className="list-disc list-inside space-y-1">
-              <li><strong>Languages:</strong> HTML, CSS, JavaScript, TypeScript, PHP, SQL</li>
-              <li><strong>Frameworks & Libraries:</strong> React, Next.js, Node.js</li>
-            </ul> */}
-            <ul className="list-disc list-inside space-y-1">
-              {Skill.map((Skills) => (
-                <li key={Skills.id}>
-                  <strong>{Skills.Skills}</strong>:{Skills.DetailSkills}
-                </li>
-              ))}
-            </ul>
-
-          </section>
-
+          <Skills></Skills>
           {/* Projects */}
-          <section
-             className="md:gap-20 md:scroll-mt-25 scroll-mt-23 py-6 border-b border-gray-300 hover:bg-cyan-100 hover:scale-[1.03] transition-all duration-300 px-3 rounded-sm"
-            id="Projects"
-          >
-            <h2 className="text-2xl text-blue-700 font-semibold mb-2">Projects</h2>
-            {/* <ul className="list-disc list-inside space-y-2">
-              <li>Portfolio Website</li>
-              <li>Task Manager App</li>
-              <li>E-commerce Platform</li>
-            </ul> */}
-            <ul className="list-disc list-inside space-y-1">
-              {Project.map((Projects) => (
-                <li key={Projects.id}>
-                  {Projects.Projects}
-                </li>
-              ))}
-            </ul>
-          </section>
-
+          <Projects></Projects>
           {/* Contact */}
-          <section
-            className="md:gap-20 md:scroll-mt-25 scroll-mt-23 py-6 border-b border-gray-300 hover:bg-cyan-100 hover:scale-[1.03] transition-all duration-300 px-3 rounded-sm"
-            id="Contact"
-          >
-            <h2 className="text-2xl text-blue-700 font-semibold mb-2">Contact</h2>
-            {Contact.map((Contacts) => (
-              <div key={Contacts.id}>
-                <p>Email: <a href="mailto:lambopremo@gmail.com" className="text-blue-700 hover:underline">{Contacts.Email}</a></p>
-                <p>Phone: <a href="tel:+8562054194422" className="text-blue-700 hover:underline">{Contacts.Phone}</a></p>
-                <p>Facebook: <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/Lambo.senviset" className="text-blue-700 hover:underline">{Contacts.Facebook}</a></p>
-                <p>GitHub: <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">{Contacts.GitHub}</a></p>
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/yourlinkedin" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">{Contacts.LinkedIn}</a></p>
-                <p>Portfolio: <a href="https://yourportfolio.com" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">{Contacts.Portfolio}</a></p>
-              </div>
-            ))}
-          </section>
+          <Contact></Contact>
         </main>
       </div>
     </div>
