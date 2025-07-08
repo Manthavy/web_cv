@@ -18,7 +18,7 @@ function Header() {
     
     return (
         
-    <div className="bg-blue-500 text-white py-6 text-center sticky top-0 px-5 shadow-md z-10">
+    <div className="bg-blue-500 text-white py-6 text-center sticky top-0 px-5 shadow-md z-15">
        {/* Sticky Navbar */}
         <nav className="flex justify-between items-center">
           <div className="text-2xl font-semibold"></div>

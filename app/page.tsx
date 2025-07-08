@@ -273,40 +273,48 @@ import Contact from "./components/MainSections/Contact";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800">
-     {/* Hero Section */}
-      <HeroSection></HeroSection>
-      {/* Images */}
-      <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 mt-6 px-4">
-        <img
-          src="/imgs/rambo.jpg"
-          alt="rambo"
-          className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-xl border-4 border-white"
-        />
-        <img
-          src="/imgs/primo.jpg"
-          alt="primo"
-          className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-xl border-4 border-white"
-        />
-      </div>
-      {/* Main Content */}
-      <div className="max-w-5xl mx-auto my-6 px-5 flex flex-col gap-8">
-        <main className="bg-white shadow-md rounded-md">  
-          {/* About Me */}
-          <AboutMe></AboutMe>
-          {/* Experience */}
-          <Experience></Experience>
-          {/* Education */}
-          <Education></Education>
-          {/* Skills */}
-          <Skills></Skills>
-          {/* Projects */}
-          <Projects></Projects>
-          {/* Contact */}
-          <Contact></Contact>
-        </main>
-      </div>
+    <div
+      className="relative bg-cover bg-center min-h-screen bg-gray-100 text-gray-800"
+      style={{ backgroundImage: "url('/imgs/primo.jpg')", backgroundAttachment: "fixed" }}
+      >
+       {/* White overlay */}
+      <div className="absolute inset-0 bg-white opacity-70 z-2"></div>
+
+        {/* Content */}
+        <div className="relative z-10">
+          {/* Hero Section */}
+          <HeroSection></HeroSection>
+          {/* Images */}
+          <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 mt-6 px-4">
+            <img
+              src="/imgs/rambo.jpg"
+              alt="rambo"
+              className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-xl border-4 border-white"
+            />
+            <img
+              src="/imgs/primo.jpg"
+              alt="primo"
+              className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-xl border-4 border-white"
+            />
+          </div>
+          {/* Main Content */}
+          <div className="max-w-5xl mx-auto px-5 flex flex-col gap-8">
+            <main className="bg-white shadow-md rounded-md">  
+              {/* About Me */}
+              <AboutMe></AboutMe>
+              {/* Experience */}
+              <Experience></Experience>
+              {/* Education */}
+              <Education></Education>
+              {/* Skills */}
+              <Skills></Skills>
+              {/* Projects */}
+              <Projects></Projects>
+              {/* Contact */}
+              <Contact></Contact>
+            </main>
+          </div>
+        </div>
     </div>
   );
 }
-
